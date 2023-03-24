@@ -1,6 +1,6 @@
 {
-  "name": "client",
   "homepage": "https://aryan1982.github.io/mern-authorization-client",
+  "name": "client",
   "version": "0.1.0",
   "private": false,
   "dependencies": {
