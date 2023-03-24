@@ -20,7 +20,7 @@ const Quote=()=>{
 	// .then(json => setQuotes(json))
 	// console.log(quotes)
 
-    fetch("http://localhost:5000/api/quotes",{
+    fetch("https://mern-authorization-server.onrender.com/api/quotes",{
 		method:"GET",
 		headers:{
 			authorization: `${localStorage.getItem("token")}`
@@ -29,7 +29,7 @@ const Quote=()=>{
 	.then(response => response.json())
 	.then(json => setname(json.name))
 
-	fetch("http://localhost:5000/api/allquotes",{
+	fetch("https://mern-authorization-server.onrender.com/api/allquotes",{
 		method:"GET",
 		headers:{
 			authorization: `${localStorage.getItem("token")}`
@@ -41,7 +41,7 @@ const Quote=()=>{
 
 	 async function createQuote(event){
 	 	event.preventDefault()
-	    const response = await fetch("http://localhost:5000/api/newquote", {
+	    const response = await fetch("https://mern-authorization-server.onrender.com/api/newquote", {
 	      method:'POST',
 	      headers:{
 	        'Content-Type':'application/json',
