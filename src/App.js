@@ -6,7 +6,7 @@ import Login from './pages/login'
 import Quote from './pages/quote'
 const App=()=> {
   return (
-    <BrowserRouter>
+
     <div className="App">
 
           <Routes>
@@ -15,7 +15,7 @@ const App=()=> {
           <Route path="/notes" element={<Quote/>}/>
         </Routes>
     </div>
-   </BrowserRouter>
+
   );
 }
 
