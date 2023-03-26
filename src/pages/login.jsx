@@ -35,7 +35,7 @@ const Login=()=> {
         .then(data => console.log(data))
 
       alert(`user login succesful`)
-      window.location.href='/notes'
+      window.location.hash='/notes'
     }else{
       alert("incorrect email or password")
     }
