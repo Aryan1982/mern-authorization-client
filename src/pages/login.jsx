@@ -10,7 +10,7 @@ const Login=()=> {
     event.preventDefault()
     
     // const token = localStorage.getItem('token');
-    const response = await fetch("mern-authorization-server.vercel.app/api/login", {
+    const response = await fetch("https://mern-authorization-server.onrender.com/api/login", {
       method:'POST',
       headers:{
         'Content-Type':'application/json',
@@ -28,7 +28,7 @@ const Login=()=> {
       localStorage.setItem('token', data.accessToken);
       const token = localStorage.getItem("token");
 
-      fetch("mern-authorization-server.vercel.app/api/login", {
+      fetch("https://mern-authorization-server.onrender.com/api/login", {
          method:'POST',
         headers: { Authorization: `{token}` }
       }).then(response => response.json())
