@@ -8,6 +8,7 @@
 .form input{
 	border-color: transparent;
 	height: 30px;
+	width: auto;
 	border-radius: 5px;
 	text-align: center;
 	font-family: Poppins
