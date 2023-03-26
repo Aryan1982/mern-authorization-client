@@ -79,9 +79,9 @@ const Quote=()=>{
         <input className="submitbtn" type="submit" value="Create"/><br/><br/>
       </form>
       
-      {/*<div><h1>Title: {quotes}</h1></div>*/}
+ 
       </div>
-      <h2>Your Notes</h2>
+      {quotes.length > 1 ? <h2>Your Notes</h2>:<h2>Add new notes</h2>}
       {quotes.map(quote => (
       		<div  className="quotediv">
       			<h2 >{quote.title}</h2>
