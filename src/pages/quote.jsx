@@ -20,7 +20,7 @@ const Quote=()=>{
 	// .then(json => setQuotes(json))
 	// console.log(quotes)
 
-    fetch("https://mern-authorization-server.onrender.com/api/quotes",{
+    fetch("mern-authorization-server.vercel.app/api/quotes",{
 		method:"GET",
 		headers:{
 			authorization: `${localStorage.getItem("token")}`
@@ -29,7 +29,7 @@ const Quote=()=>{
 	.then(response => response.json())
 	.then(json => setname(json.name))
 
-	fetch("https://mern-authorization-server.onrender.com/api/allquotes",{
+	fetch("mern-authorization-server.vercel.app/api/allquotes",{
 		method:"GET",
 		headers:{
 			authorization: `${localStorage.getItem("token")}`
@@ -41,7 +41,7 @@ const Quote=()=>{
 
 	 async function createQuote(event){
 	 	event.preventDefault()
-	    const response = await fetch("https://mern-authorization-server.onrender.com/api/newquote", {
+	    const response = await fetch("mern-authorization-server.vercel.app/api/newquote", {
 	      method:'POST',
 	      headers:{
 	        'Content-Type':'application/json',
