@@ -63,7 +63,7 @@ const Login=()=> {
         <br/>
 
         <input className="submitbtn" type="submit" value="Login"/><br/><br/>
-        <Link to="/register"><button>new here? register here</button></Link>
+        <Link to="/register"><button>click here to register</button></Link>
       </form>
       
       </div>
