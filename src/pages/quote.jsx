@@ -1,5 +1,7 @@
 import React,{useEffect,useState} from "react";
 import "./newquotepage.css"
+import thumbpin from '../assets/paperpin.png'
+
 const Quote=()=>{
 	const [quotes, setQuotes] = useState([]);
 	const [name,setname] = useState();
@@ -84,6 +86,7 @@ const Quote=()=>{
       {quotes.length > 1 ? <h2>Your Notes</h2>:<h2>Add new notes</h2>}
       {quotes.map(quote => (
       		<div  className="quotediv">
+				<div><img className="thumbpin" src={thumbpin}/></div>
       			<h2 >{quote.title}</h2>
       			<h4 >{quote.content}</h4>
       			

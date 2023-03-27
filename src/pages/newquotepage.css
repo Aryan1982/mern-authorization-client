@@ -63,3 +63,14 @@ button{
 	height: auto;
 	border:none;
 }
+
+.quotediv div{
+	position:relative;
+	width:100%;
+	height: 0px;
+}
+
+.thumbpin{
+	height: 28px;
+	filter: drop-shadow(3px 3px 8px #212121)
+}
