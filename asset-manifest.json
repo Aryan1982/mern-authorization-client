@@ -1,13 +1,14 @@
 {
   "files": {
-    "main.css": "/mern-authorization-client/static/css/main.a290969f.css",
-    "main.js": "/mern-authorization-client/static/js/main.e10a0721.js",
+    "main.css": "/mern-authorization-client/static/css/main.e30e8e09.css",
+    "main.js": "/mern-authorization-client/static/js/main.4812db6e.js",
+    "static/media/paperpin.png": "/mern-authorization-client/static/media/paperpin.5eac4529010a889b8084.png",
     "index.html": "/mern-authorization-client/index.html",
-    "main.a290969f.css.map": "/mern-authorization-client/static/css/main.a290969f.css.map",
-    "main.e10a0721.js.map": "/mern-authorization-client/static/js/main.e10a0721.js.map"
+    "main.e30e8e09.css.map": "/mern-authorization-client/static/css/main.e30e8e09.css.map",
+    "main.4812db6e.js.map": "/mern-authorization-client/static/js/main.4812db6e.js.map"
   },
   "entrypoints": [
-    "static/css/main.a290969f.css",
-    "static/js/main.e10a0721.js"
+    "static/css/main.e30e8e09.css",
+    "static/js/main.4812db6e.js"
   ]
 }
