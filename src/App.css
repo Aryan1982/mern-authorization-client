@@ -6,6 +6,10 @@
 	align-items: center;
 	font-family: Poppins;
 }
+.App{
+	height: auto;
+	min-height: 100vh;
+}
 body{
 	background: #c9ced3;
 	height: 100vh;

@@ -1,7 +1,4 @@
 import React,{useEffect,useState} from "react";
-// import jwt from 'jsonwebtoken';
-// import {useHistory} from 'react-router-dom';
-import {Link} from "react-router-dom"
 import "./newquotepage.css"
 const Quote=()=>{
 	const [quotes, setQuotes] = useState([]);
@@ -41,7 +38,7 @@ const Quote=()=>{
 
 	 async function createQuote(event){
 	 	event.preventDefault()
-	    const response = await fetch("https://mern-authorization-server.onrender.com/api/newquote", {
+	    fetch("https://mern-authorization-server.onrender.com/api/newquote", {
 	      method:'POST',
 	      headers:{
 	        'Content-Type':'application/json',
@@ -51,12 +48,7 @@ const Quote=()=>{
 	        title,
 	        content,
 	      }),
-	    })
-
-	    const newQuote = await response.json()
-	    console.log(newQuote)
-
-
+	    }).then(alert("new note was added"))
 
 	 }
 
@@ -87,9 +79,9 @@ const Quote=()=>{
         <input className="submitbtn" type="submit" value="Create"/><br/><br/>
       </form>
       
-      {/*<div><h1>Title: {quotes}</h1></div>*/}
+ 
       </div>
-      <h2>Your Notes</h2>
+      {quotes.length > 1 ? <h2>Your Notes</h2>:<h2>Add new notes</h2>}
       {quotes.map(quote => (
       		<div  className="quotediv">
       			<h2 >{quote.title}</h2>

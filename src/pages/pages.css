@@ -9,20 +9,20 @@
 	height: 30px;
 	border-radius: 5px;
 	text-align: center;
-	font-family: Poppins
+	font-family: Poppins;
 }
 
 button{
 	background-color: #212121;
 	color:white;
 	border-radius: 5px;
-	font-family: Poppins
+	font-family: Poppins;
 }
 
 .submitbtn{
 	background-color: lightblue;
 	width: 100px;
-	font-family: Poppins
+	font-family: Poppins;
 }
 
 

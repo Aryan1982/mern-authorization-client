@@ -26,7 +26,7 @@ const Login=()=> {
     // console.log(data)
     if (data.accessToken){
       localStorage.setItem('token', data.accessToken);
-      const token = localStorage.getItem("token");
+      // const token = localStorage.getItem("token");
 
       fetch("https://mern-authorization-server.onrender.com/api/login", {
          method:'POST',
@@ -35,11 +35,11 @@ const Login=()=> {
         .then(data => console.log(data))
 
       alert(`user login succesful`)
-      window.location.hash='notes'
+      window.location.hash='/notes'
     }else{
       alert("incorrect email or password")
     }
-    console.log(data)
+
   }
   return (
     <div className="App">
@@ -63,7 +63,7 @@ const Login=()=> {
         <br/>
 
         <input className="submitbtn" type="submit" value="Login"/><br/><br/>
-        <Link to="/register"><button>new here? register here</button></Link>
+        <Link to="/register"><button>click here to register</button></Link>
       </form>
       
       </div>
