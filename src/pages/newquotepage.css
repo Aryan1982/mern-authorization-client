@@ -54,3 +54,12 @@ button{
 .quotediv h4{
 	text-align: left;
 }
+
+.togglepassword{
+	position:relative;
+	top:-28px;
+	right:-67px;
+	background:transparent;
+	height: auto;
+	border:none;
+}

@@ -1,11 +1,21 @@
 import React,{useState} from "react";
 import {Link} from "react-router-dom"
+import { AiFillEyeInvisible,AiFillEye } from 'react-icons/ai';
 
 import "./pages.css"
 const Login=()=> {
   const [email,setEmail]=useState("")
   const [password,setPassword]=useState("")
+  const [passwordType, setPasswordType] = useState("password");
 
+    const togglePassword =()=>{
+      if(passwordType==="password")
+      {
+       setPasswordType("text")
+       return;
+      }
+      setPasswordType("password")
+    }
   async function loginUser(event){
     event.preventDefault()
     
@@ -56,10 +66,12 @@ const Login=()=> {
 
         <input
         value={password}
-        onChange={(e)=>setPassword(e.target.value)}
-        type="password"
+        onChange={(e)=>{setPassword(e.target.value);     
+        }}
+        type={passwordType}
         placeholder="Password"
-        />
+        /><button type="button" className="togglepassword" onClick={togglePassword}>
+        { passwordType==="password"? <AiFillEyeInvisible style={{color:"black",fontSize: '20px'}}/> :<AiFillEye style={{color:"black",fontSize: '20px'}}/> }</button>
         <br/>
 
         <input className="submitbtn" type="submit" value="Login"/><br/><br/>
