@@ -53,6 +53,7 @@ const Login=()=> {
   }
   return (
     <div className="App">
+      <h1 style={{textAlign:'center'}}>LOGIN</h1>
         <div className="form">
       <form onSubmit={loginUser}>
 

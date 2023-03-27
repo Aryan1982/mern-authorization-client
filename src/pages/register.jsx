@@ -45,7 +45,7 @@ function Register() {
     }
   return (
     <div className="App">
-        {/*<h1>Register</h1>*/}
+        <h1 style={{textAlign:'center'}}>REGISTER</h1>
         <div className="form">
       <form onSubmit={registerUser}>
 
