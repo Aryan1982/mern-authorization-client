@@ -26,7 +26,7 @@ function Register() {
     console.log(data)
     if (data.status === 'ok'){
       alert("user regestered succesful")
-      window.location.hash='/notes'
+      window.location.hash='/'
      }else{
       alert(data.error)
      }
