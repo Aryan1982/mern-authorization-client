@@ -1,12 +1,18 @@
 import React,{useEffect,useState} from "react";
 import "./newquotepage.css"
 import thumbpin from '../assets/paperpin.png'
+import loader from '../assets/loader.gif'
+// import UpdateNote from './updatenote'
+import {AiOutlineClose} from 'react-icons/ai';
+
 
 const Quote=()=>{
 	const [quotes, setQuotes] = useState([]);
 	const [name,setname] = useState();
 	const [title,setTitle]=useState();
   const [content,setContent]=useState();
+  const [modify,setModify]=useState(false);
+  const [quoteID,setQuoteID]=useState(false);
 
 	 useEffect(() => {
 		    fetch("https://mern-authorization-server.onrender.com/api/quotes",{
@@ -41,7 +47,7 @@ const Quote=()=>{
 	        title,
 	        content,
 	      }),
-	    }).then(alert("new note was added"))
+	    }).then(alert("new note was added")).then(setContent("")).then(setTitle(""))
 
 	 }
 
@@ -58,8 +64,61 @@ const Quote=()=>{
 	}).then(alert('note has been deleted'))
 
 	 }
+//http://localhost:5000/
+	 async function UpdateNote(){
+	 		fetch("https://mern-authorization-server.onrender.com/api/update",{
+		method:"POST",
+		headers:{
+			'Content-Type':'application/json',
+			authorization: `${localStorage.getItem("token")}`
+		},
+	  body:JSON.stringify({
+	  	quoteid:quoteID,
+	  	title,
+	  	content,
+	  }),
+	}).then(alert('note has been updated')).then(setModify(!modify))
+	 		.then(setContent("")).then(setTitle(""))
+	 }
+
+	 
+
+
+
+
 	return(
 		<>
+		{modify &&
+			<div className="UpdateNoteDiv">
+	      	<AiOutlineClose className="closeicon" onClick={()=>setModify(!modify)} style={{color:"black",top: "-156px",right: "-237px",position: "relative"}}/>
+	        <div className="UpdateNoteContent">
+	        <h1 style={{textAlign:'center', fontSize:"1.5rem"}}>Modify Note</h1>
+	      <form onSubmit={UpdateNote}>
+
+	        <input
+	        value={title}
+	        onChange={(e)=>setTitle(e.target.value)}
+	        type="text"
+	        placeholder="Title"
+	        />
+	        <br/>
+
+	        <input
+	        value={content}
+	        onChange={(e)=>{setContent(e.target.value);     
+	        }}
+	        placeholder="Content"
+	        />
+	        <br/>
+
+	        <input className="submitbtn" type="submit" value="Modify Note"/><br/><br/>
+	        
+	      </form>
+	      
+	      </div>
+    </div>}
+			{!name && <div className="loaderDiv"><img className="loader" src={loader}/></div>}
+			 
 			<h1>Hello {name}</h1>
         <div className="newquoteform">
       <form onSubmit={createQuote}>
@@ -89,11 +148,13 @@ const Quote=()=>{
       </div>
       {quotes.length > 0 ? <h2>Your Notes</h2>:<h2 style={{textAlign:'center'}}>Add new notes<br/>(if you have added and not showing up, please refresh)</h2>}
       {quotes.map(quote => (
-      		<div  key={quote._id} className="quotediv">
+      		<div  className="quotediv">
 				<div><img className="thumbpin" src={thumbpin} alt="thumbpin"/></div>
       			<h2 >{quote.title}</h2>
       			<h4 >{quote.content}</h4>
-      			<div><button key={quote._id} className="deletebtn" onClick={()=>deletequote(quote._id)}>DELETE</button></div>
+      			<div><button key={quote._id} className="deletebtn" onClick={()=>deletequote(quote._id)}>DELETE</button>
+      				<button  className="modifybtn" onClick={()=>{setModify(!modify); setQuoteID(quote._id);setContent(quote.content);setTitle(quote.title)}}>MODIFY</button>
+      			</div>
       		</div>
           
         ))}
