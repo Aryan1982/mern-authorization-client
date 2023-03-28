@@ -9,33 +9,24 @@ const Quote=()=>{
   const [content,setContent]=useState();
 
 	 useEffect(() => {
-	//  	fetch("http://localhost:5000/api/allQuotes",{
-	// 	method:"GET",
-	// 	headers:{
-	// 		authorization: `${localStorage.getItem("token")}`
-	// 	}
-	// })
-	// .then(response => response.json())
-	// .then(json => setQuotes(json))
-	// console.log(quotes)
+		    fetch("https://mern-authorization-server.onrender.com/api/quotes",{
+				method:"GET",
+				headers:{
+					authorization: `${localStorage.getItem("token")}`
+				}
+				})
+					.then(response => response.json())
+					.then(json => setname(json.name))
 
-    fetch("https://mern-authorization-server.onrender.com/api/quotes",{
-		method:"GET",
-		headers:{
-			authorization: `${localStorage.getItem("token")}`
-		}
-	})
-	.then(response => response.json())
-	.then(json => setname(json.name))
 
-	fetch("https://mern-authorization-server.onrender.com/api/allquotes",{
-		method:"GET",
-		headers:{
-			authorization: `${localStorage.getItem("token")}`
-		}
-	}).then(response => response.json())
-	.then(json => setQuotes(json))
-	  });
+				fetch("https://mern-authorization-server.onrender.com/api/allquotes",{
+					method:"GET",
+					headers:{
+						authorization: `${localStorage.getItem("token")}`
+					}
+					}).then(response => response.json())
+						.then(json => setQuotes(json))  
+		});
 
 
 	 async function createQuote(event){
@@ -53,14 +44,18 @@ const Quote=()=>{
 	    }).then(alert("new note was added"))
 
 	 }
-	 function deletequote(){
-		fetch('https://aryan1982-upgraded-doodle-4v4v9g6gg492qxww-5000.preview.app.github.dev/api/delete',{
-			method:'POST',
-			headers:{
-			  'Content-Type':'application/json',
-			  authorization: `${localStorage.getItem("token")}`
-			}
-		  }).then(alert("note was deleted"))
+
+
+	 async function deletequote(quoteid){
+	 	// console.log(quoteid)
+		fetch("https://mern-authorization-server.onrender.com/api/delete",{
+		method:"POST",
+		headers:{
+			'Content-Type':'application/json',
+			authorization: `${localStorage.getItem("token")}`
+		},
+	  body:JSON.stringify({quoteid:quoteid}),
+	}).then(alert('note has been deleted'))
 
 	 }
 	return(
@@ -92,13 +87,13 @@ const Quote=()=>{
       
  
       </div>
-      {quotes.length > 1 ? <h2>Your Notes</h2>:<h2>Add new notes</h2>}
+      {quotes.length > 0 ? <h2>Your Notes</h2>:<h2 style={{textAlign:'center'}}>Add new notes<br/>(if you have added and not showing up, please refresh)</h2>}
       {quotes.map(quote => (
-      		<div  className="quotediv">
-				<div><img className="thumbpin" src={thumbpin}/></div>
+      		<div  key={quote._id} className="quotediv">
+				<div><img className="thumbpin" src={thumbpin} alt="thumbpin"/></div>
       			<h2 >{quote.title}</h2>
       			<h4 >{quote.content}</h4>
-      			<button key={quote.id} onClick={deletequote}>DELETE</button>
+      			<div><button key={quote._id} className="deletebtn" onClick={()=>deletequote(quote._id)}>DELETE</button></div>
       		</div>
           
         ))}

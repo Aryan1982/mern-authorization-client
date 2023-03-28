@@ -35,7 +35,6 @@ function Register() {
     })
 
     const data = await response.json()
-    console.log(data)
     if (data.status === 'ok'){
       alert("user regestered succesful")
       window.location.hash='/'
