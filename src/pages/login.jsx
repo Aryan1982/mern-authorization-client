@@ -1,8 +1,11 @@
 import React,{useState} from "react";
 import {Link} from "react-router-dom"
 import { AiFillEyeInvisible,AiFillEye } from 'react-icons/ai';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import "./pages.css"
+
+
 const Login=()=> {
   const [email,setEmail]=useState("")
   const [password,setPassword]=useState("")
@@ -33,10 +36,14 @@ const Login=()=> {
     })
     const data = await response.json()
     
-    // console.log(data)
+
     if (data.accessToken){
       localStorage.setItem('token', data.accessToken);
-      // const token = localStorage.getItem("token");
+
+
+       const handleToastClose = () => {
+            window.location.hash='/notes'
+          };
 
       fetch("https://mern-authorization-server.onrender.com/api/login", {
          method:'POST',
@@ -44,15 +51,21 @@ const Login=()=> {
       }).then(response => response.json())
         .then(data => console.log(data))
 
-      alert(`user login succesful`)
-      window.location.hash='/notes'
+      toast.success(`user login succesful`, {
+      onClose:handleToastClose ,
+    })
+      // .then(window.location.hash='/notes')
+      
     }else{
-      alert("incorrect email or password")
+      toast.error('Incorrect username or password')
     }
 
   }
   return (
+    <>
+    <ToastContainer theme="dark" autoClose={2000} pauseOnHover={false}/>
     <div className="App">
+    
       <h1 style={{textAlign:'center'}}>LOGIN</h1>
         <div className="form">
       <form onSubmit={loginUser}>
@@ -81,6 +94,7 @@ const Login=()=> {
       
       </div>
     </div>
+    </>
   );
 }
 

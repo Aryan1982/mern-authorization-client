@@ -4,7 +4,8 @@ import thumbpin from '../assets/paperpin.png'
 import loader from '../assets/loader.gif'
 // import UpdateNote from './updatenote'
 import {AiOutlineClose} from 'react-icons/ai';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Quote=()=>{
 	const [quotes, setQuotes] = useState([]);
@@ -34,7 +35,10 @@ const Quote=()=>{
 						.then(json => setQuotes(json))  
 		});
 
-
+	 function setdefault(){
+	 		setContent("");
+	 		setTitle("");
+	 }
 	 async function createQuote(event){
 	 	event.preventDefault()
 	    fetch("https://mern-authorization-server.onrender.com/api/newquote", {
@@ -47,7 +51,7 @@ const Quote=()=>{
 	        title,
 	        content,
 	      }),
-	    }).then(alert("new note was added")).then(setContent("")).then(setTitle(""))
+	    }).then(toast.info("new note was added")).then(setdefault())
 
 	 }
 
@@ -61,7 +65,7 @@ const Quote=()=>{
 			authorization: `${localStorage.getItem("token")}`
 		},
 	  body:JSON.stringify({quoteid:quoteid}),
-	}).then(alert('note has been deleted'))
+	}).then(toast.info('note has been deleted'))
 
 	 }
 //http://localhost:5000/
@@ -77,8 +81,8 @@ const Quote=()=>{
 	  	title,
 	  	content,
 	  }),
-	}).then(alert('note has been updated')).then(setModify(!modify))
-	 		.then(setContent("")).then(setTitle(""))
+	}).then(toast.info('note has been updated')).then(setModify(!modify))
+	 		.then(setdefault())
 	 }
 
 	 
@@ -88,9 +92,10 @@ const Quote=()=>{
 
 	return(
 		<>
+		<ToastContainer theme="dark" autoClose={2000} pauseOnHover={false}/>
 		{modify &&
 			<div className="UpdateNoteDiv">
-	      	<AiOutlineClose className="closeicon" onClick={()=>setModify(!modify)} style={{color:"black",top: "-156px",right: "-237px",position: "relative"}}/>
+	      	<AiOutlineClose className="closeicon" onClick={()=>{setModify(!modify);setdefault()}} style={{color:"black",top: "-156px",right: "-237px",position: "relative"}}/>
 	        <div className="UpdateNoteContent">
 	        <h1 style={{textAlign:'center', fontSize:"1.5rem"}}>Modify Note</h1>
 	      <form onSubmit={UpdateNote}>
