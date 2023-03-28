@@ -53,7 +53,16 @@ const Quote=()=>{
 	    }).then(alert("new note was added"))
 
 	 }
+	 function deletequote(){
+		fetch('https://aryan1982-upgraded-doodle-4v4v9g6gg492qxww-5000.preview.app.github.dev/api/delete',{
+			method:'POST',
+			headers:{
+			  'Content-Type':'application/json',
+			  authorization: `${localStorage.getItem("token")}`
+			}
+		  }).then(alert("note was deleted"))
 
+	 }
 	return(
 		<>
 			<h1>Hello {name}</h1>
@@ -89,7 +98,7 @@ const Quote=()=>{
 				<div><img className="thumbpin" src={thumbpin}/></div>
       			<h2 >{quote.title}</h2>
       			<h4 >{quote.content}</h4>
-      			
+      			<button key={quote.id} onClick={deletequote}>DELETE</button>
       		</div>
           
         ))}
