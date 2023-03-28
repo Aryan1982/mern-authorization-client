@@ -1,7 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-.App,form{
+.App{
 	display: flex;
 	justify-content: center;
+	flex-direction: column;
+	align-items: center;
+	font-family: Poppins;
+}
+form{
+	display: flex;
 	flex-direction: column;
 	align-items: center;
 	font-family: Poppins;
