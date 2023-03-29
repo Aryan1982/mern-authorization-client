@@ -87,8 +87,8 @@ const Login=()=> {
         className="inputfield"
         type={passwordType}
         placeholder="Password"
-        /><button type="button" className="togglepassword" onClick={togglePassword}>
-        { passwordType==="password"? <AiFillEyeInvisible style={{color:"black",fontSize: '20px'}}/> :<AiFillEye style={{color:"black",fontSize: '20px'}}/> }</button>
+        /><i type="button" className="togglepassword" onClick={togglePassword}>
+        { passwordType==="password"? <AiFillEyeInvisible style={{color:"black",fontSize: '20px'}}/> :<AiFillEye style={{color:"black",fontSize: '20px'}}/> }</i>
         <br/>
 
         <input className="submitbtn" type="submit" value="Login"/><br/><br/>
