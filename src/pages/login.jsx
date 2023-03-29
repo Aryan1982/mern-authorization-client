@@ -66,8 +66,9 @@ const Login=()=> {
     <ToastContainer theme="dark" autoClose={2000} pauseOnHover={false}/>
     <div className="App">
     
-      <h1 style={{textAlign:'center'}}>LOGIN</h1>
+      
         <div className="form">
+        <h1 style={{textAlign:'center', marginTop:"0px"}}>LOGIN</h1>
       <form onSubmit={loginUser}>
 
         <input
@@ -75,6 +76,7 @@ const Login=()=> {
         onChange={(e)=>setEmail(e.target.value)}
         type="text"
         placeholder="Email"
+        className="inputfield"
         />
         <br/>
 
@@ -82,6 +84,7 @@ const Login=()=> {
         value={password}
         onChange={(e)=>{setPassword(e.target.value);     
         }}
+        className="inputfield"
         type={passwordType}
         placeholder="Password"
         /><button type="button" className="togglepassword" onClick={togglePassword}>

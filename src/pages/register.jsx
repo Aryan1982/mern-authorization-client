@@ -44,8 +44,9 @@ function Register() {
     }
   return (
     <div className="App">
-        <h1 style={{textAlign:'center'}}>REGISTER</h1>
+        
         <div className="form">
+        <h1 style={{textAlign:'center', marginTop:"0px"}}>REGISTER</h1>
       <form onSubmit={registerUser}>
 
         <input
@@ -53,6 +54,7 @@ function Register() {
         onChange={(e)=>setName(e.target.value)}
         type="text"
         placeholder="Name"
+        className="inputfield"
         />
         <br/>
 
@@ -61,6 +63,7 @@ function Register() {
         onChange={(e)=>setEmail(e.target.value)}
         type="text"
         placeholder="Email"
+        className="inputfield"
         />
         <br/>
 
@@ -69,6 +72,7 @@ function Register() {
         onChange={(e)=>setPassword(e.target.value)}
         type={passwordType}
         placeholder="Password"
+        className="inputfield"
         /><button type="button" className="togglepassword" onClick={togglePassword}>
         { passwordType==="password"? <AiFillEyeInvisible style={{color:"black",fontSize: '20px'}}/> :<AiFillEye style={{color:"black",fontSize: '20px'}}/> }</button>
         <br/>

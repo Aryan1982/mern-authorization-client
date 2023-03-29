@@ -4,11 +4,13 @@
 	border-radius: 20px;
 	box-shadow: 0 15px 30px 5px rgb(0, 0, 0, 0.3);
 }
-.form input{
-	border-color: transparent;
+.inputfield{
+	border: none;
+	border-bottom: 2px solid #212121;
+	background:transparent;
 	height: 30px;
-	border-radius: 5px;
-	text-align: center;
+	/* border-radius: 5px; */
+	/* text-align: center; */
 	font-family: Poppins;
 }
 
