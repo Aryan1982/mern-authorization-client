@@ -1,6 +1,7 @@
 import React,{useState} from "react";
 import {Link} from "react-router-dom"
 import { AiFillEyeInvisible,AiFillEye } from 'react-icons/ai';
+import { ToastContainer, toast } from 'react-toastify';
 import "./pages.css"
 
 
@@ -33,18 +34,23 @@ function Register() {
         password,
       }),
     })
-
+    const handleToastClose = () => {
+            window.location.hash='/'
+          };
     const data = await response.json()
     if (data.status === 'ok'){
-      alert("user regestered succesful")
-      window.location.hash='/'
+      toast.success(`user login succesful`, {
+      onClose:handleToastClose ,
+    })
+      
      }else{
-      alert(data.error)
+      toast.error(data.error, {
+    })
      }
     }
   return (
     <div className="App">
-        
+        <ToastContainer theme="dark" autoClose={2000} pauseOnHover={false}/>
         <div className="form">
         <h1 style={{textAlign:'center', marginTop:"0px"}}>REGISTER</h1>
       <form onSubmit={registerUser}>
